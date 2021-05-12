@@ -33,12 +33,12 @@
             style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(102, 85, 85);width:150px">
             <option value="" disabled selected>Category</option>
             <option value="" {{#if (eq filter '' )}} selected {{/if}}>All</option>
-            <option value="home" {{#if (eq filter 'home' )}} selected {{/if}}>家居物業</option>
-            <option value="transportation" {{#if (eq filter 'transportation' )}} selected {{/if}}>交通出行
+            <option value="家居物業" {{#if (eq filter '家居物業' )}} selected {{/if}}>家居物業</option>
+            <option value="交通出行" {{#if (eq filter '交通出行' )}} selected {{/if}}>交通出行
             </option>
-            <option value="entertainment" {{#if (eq filter 'entertainment' )}} selected {{/if}}>休閒娛樂</option>
-            <option value="food" {{#if (eq filter 'food' )}} selected {{/if}}>餐飲食品</option>
-            <option value="other" {{#if (eq filter 'other' )}} selected {{/if}}>其他</option>
+            <option value="休閒娛樂" {{#if (eq filter '休閒娛樂' )}} selected {{/if}}>休閒娛樂</option>
+            <option value="餐飲食品" {{#if (eq filter '餐飲食品' )}} selected {{/if}}>餐飲食品</option>
+            <option value="其他" {{#if (eq filter '其他' )}} selected {{/if}}>其他</option>
           </select>
         </form>
       </div>
@@ -62,9 +62,9 @@
           <span class="ml-1 font-weight-bolder">{{this.date}}</span>
         </div>
         <div class="col-1" class="d-flex justify-content-end">
-          <a class="btn btn-success mb-2" href="/record/{{ this._id }}/edit" style="width: 50px;"><i
+          <a class="btn btn-success mb-2" href="/records/{{ this._id }}/edit" style="width: 50px;"><i
               class="fas fa-edit"></i></a>
-          <form action="/record/{{ this._id }}/delete?_method=DELETE" method="POST">
+          <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
             <button class="btn btn-danger text-center" type="submit" style="width: 50px;"><i
                 class="far fa-trash-alt"></i></button>
           </form>

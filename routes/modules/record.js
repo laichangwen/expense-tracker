@@ -15,15 +15,6 @@ router.post("/", (req, res) => {
     .catch(error => console.log(error))
 })
 
-// show details of a specific id
-router.get("/:id", (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
-    .lean()
-    .then(todo => res.render("detail", { todo }))
-    .catch(error => console.log(error))
-})
-
 // edit todo of a specific id
 router.get("/:id/edit", (req, res) => {
   const id = req.params.id
@@ -34,27 +25,34 @@ router.get("/:id/edit", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
-  const { name, isDone } = req.body
+  const { name, category, date, amount } = req.body
+  let type, icon
+  if (category.split("/")) {
+    [type, icon] = category.split("/")
+  }
   const id = req.params.id
-  // return Record.findById(id)
-  //   .then(todo => {
-  //     todo.name = name
-  //     todo.isDone = (isDone === "on")
-  //     return todo.save()
-  //   })
-  //   .then(() => res.redirect(`/todos/${id}`))
-  //   .catch(error => console.log(error))
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.category = type || category
+      record.icon = icon || record.icon
+      record.date = date
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
 })
 
 // delete todo of a specific id
 router.delete("/:id", (req, res) => {
   const id = req.params.id
-  // return Record.findById(id)
-  //   .then(todo => {
-  //     todo.remove()
-  //   })
-  //   .then(() => res.redirect(`/`))
-  //   .catch(error => console.log(error))
+  return Record.findById(id)
+    .then(record => {
+      record.remove()
+    })
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
 })
 
 
