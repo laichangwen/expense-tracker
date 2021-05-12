@@ -1,13 +1,13 @@
 const express = require("express")
 const router = express.Router()
-const Todo = require("../../models/todo")
+const Record = require("../../models/record")
 
 router.get("/", (req, res) => {
   const sort = "-_id"
-  Todo.find()
+  Record.find()
     .lean()
     .sort(sort)
-    .then(todos => res.render("index", { todos }))
+    .then(records => res.render("index", { records }))
     .catch(error => console.error(error))
 })
 

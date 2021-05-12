@@ -1,20 +1,76 @@
 <ul class="list-group">
-  {{#each todos}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto mr-auto">
-        <input style="vertical-align: middle;" type="checkbox" name="isDone" {{#if this.isDone}} checked {{/if}}
-          disabled>
-        <h4 style="display: inline; vertical-align: middle;">{{this.name}}</h4>
+  <div class="container">
+    <li class="list-group-item mx-auto border-0" style="width: 600px;">
+      <div class="d-flex justify-content-center align-items-center">
+        <h4 class="mr-4">Total</h4>
+        <h1 class="display-3">$ {{totalamount.amount}}</h1>
       </div>
-      <div class="col-auto">
-        <a class="btn btn-secondary" href="/todos/{{this._id}}">detail</a>
-        <a class="btn btn-success" href="/todos/{{this._id}}/edit">edit</a>
-        <form action="/todos/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">delete</button>
+      <div class="row d-flex justify-content-between">
+        <form class="form my-2 my-lg-0 col-6" action="/records/create" method="GET">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Create</button>
+        </form>
+        <form action="/filter/month" method="GET">
+          <select name="filter" class="form-control btn-outline-secondary" id='inputType' onchange="this.form.submit()"
+            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(102, 85, 85);width:130px">
+            <option value="" disabled selected>Month</option>
+            <option value="" {{#if (eq filter '' )}} selected {{/if}}>All</option>
+            <option value="1" {{#if (eq filter '1' )}} selected {{/if}}>January</option>
+            <option value="2" {{#if (eq filter '2' )}} selected {{/if}}>February</option>
+            <option value="3" {{#if (eq filter '3' )}} selected {{/if}}>March</option>
+            <option value="4" {{#if (eq filter '4' )}} selected {{/if}}>April</option>
+            <option value="5" {{#if (eq filter '5' )}} selected {{/if}}>May</option>
+            <option value="6" {{#if (eq filter '6' )}} selected {{/if}}>June</option>
+            <option value="7" {{#if (eq filter '7' )}} selected {{/if}}>July</option>
+            <option value="8" {{#if (eq filter '8' )}} selected {{/if}}>August</option>
+            <option value="9" {{#if (eq filter '9' )}} selected {{/if}}>September</option>
+            <option value="10" {{#if (eq filter '10' )}} selected {{/if}}>October</option>
+            <option value="11" {{#if (eq filter '11' )}} selected {{/if}}>November</option>
+            <option value="12" {{#if (eq filter '12' )}} selected {{/if}}>December</option>
+          </select>
+        </form>
+        <form action="/filter" method="GET">
+          <select name="filter" class="form-control btn-outline-secondary" id='inputType' onchange="this.form.submit()"
+            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(102, 85, 85);width:150px">
+            <option value="" disabled selected>Category</option>
+            <option value="" {{#if (eq filter '' )}} selected {{/if}}>All</option>
+            <option value="home" {{#if (eq filter 'home' )}} selected {{/if}}>家居物業</option>
+            <option value="transportation" {{#if (eq filter 'transportation' )}} selected {{/if}}>交通出行
+            </option>
+            <option value="entertainment" {{#if (eq filter 'entertainment' )}} selected {{/if}}>休閒娛樂</option>
+            <option value="food" {{#if (eq filter 'food' )}} selected {{/if}}>餐飲食品</option>
+            <option value="other" {{#if (eq filter 'other' )}} selected {{/if}}>其他</option>
+          </select>
         </form>
       </div>
-    </div>
-  </li>
-  {{/each}}
+    </li>
+
+    {{#each records }}
+    <li class=" list-group-item mx-auto border-0" style="width: 600px;margin-bottom:-15px">
+      <div class="row" style="border-style:outset;border-color:rgb(238, 235, 209)">
+        <div class="col-10 ml-1 mr-4 row d-flex justify-content-between align-items-center">
+          <div class="col-3"><i class="{{this.icon}} fa-3x"></i>
+          </div>
+          <div class="col-9 d-flex justify-content-between align-items-center">
+            <h3>
+              {{ this.name }}
+            </h3>
+            <h2>
+              ${{ this.amount }}
+            </h2>
+          </div>
+          <br>
+          <span class="ml-1 font-weight-bolder">{{this.date}}</span>
+        </div>
+        <div class="col-1" class="d-flex justify-content-end">
+          <a class="btn btn-success mb-2" href="/record/{{ this._id }}/edit" style="width: 50px;"><i
+              class="fas fa-edit"></i></a>
+          <form action="/record/{{ this._id }}/delete?_method=DELETE" method="POST">
+            <button class="btn btn-danger text-center" type="submit" style="width: 50px;"><i
+                class="far fa-trash-alt"></i></button>
+          </form>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </div>
 </ul>

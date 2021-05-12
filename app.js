@@ -8,7 +8,14 @@ require("./config/mongoose")
 
 const app = express()
 const PORT = process.env.PORT || 3000
-app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }))
+const helper = exphbs.create({
+  defaultlayout: 'main',
+  extname: ".hbs",
+  helpers: {
+    eq: function (v1, v2) { return (v1 === v2) }
+  }
+})
+app.engine("hbs", helper.engine)
 app.set("view engine", "hbs")
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))

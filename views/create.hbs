@@ -1,0 +1,47 @@
+<div class="container mx-auto" style="width: 500px;">
+  <h1 class="text-center display-3 mt-4">New record</h1>
+  <h5 class="mb-4" style="color: rgb(180, 39, 39);">* Required</h5>
+  <form action="/records" method="POST">
+    <div class="form-group row mb-4">
+      <label for="name-input" class="col-2 col-form-label">Name*</label>
+      <div class="col-10">
+        <input class="form-control" type="text" placeholder="Name" id="name-input" name="name" required>
+      </div>
+    </div>
+    <div class="form-group row mb-4">
+      <label for="categorySelect" class="col-2 col-form-label">Category*</label>
+      <div class="col-10">
+        <select class="form-control" id="categorySelect" style="cursor: pointer" name="category" required>
+          <option value="" disabled selected>Category</option>
+          <option value="家居物業/fas fa-home">家居物業</option>
+          <option value="交通出行/fas fa-shuttle-van">交通出行</option>
+          <option value="休閒娛樂/fas fa-grin-beam">休閒娛樂</option>
+          <option value="餐飲食品/fas fa-utensils">餐飲食品</option>
+          <option value="其他/fas fa-pen">其他</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group input-group row mb-4">
+      <label for="date-input" class="col-2 col-form-label mr-4">Date*</label>
+      <div class="input-group-prepend">
+        <span class="input-group-text" style="width: 45px;"><i class=" far fa-calendar-alt fa-lg"></i></span>
+      </div>
+      <input class="form-control col-5" type="date" id="date-input" style="cursor: pointer" name='date' required>
+    </div>
+    <div class="form-group input-group row mb-4">
+      <label for="amount-input" class="col-2 col-form-label mr-4">Amount*</label>
+      <div class="input-group-prepend">
+        <span class="input-group-text" style="width: 45px"><i class="fas fa-dollar-sign fa-lg ml-1"></i></span>
+      </div>
+      <input class=" form-control col-5" type="number" placeholder="100" id="amount-input" name="amount" required>
+    </div>
+    <div class="text-center mt-4 row">
+      <div class="col-5"></div>
+      <div class="col-3"><button type="submit" class="btn btn-primary">Submit</button></div>
+      <div class="col-2"></div>
+      <div class="col-2">
+        <button type="button" onclick="history.back()" class="btn btn-outline-secondary">Back</button>
+      </div>
+    </div>
+  </form>
+</div>
