@@ -4,11 +4,10 @@ const Record = require("../../models/record")
 
 
 router.get("/", (req, res) => {
-
   Record.find()
     .lean()
+    .sort("-date")
     .then((records) => {
-      // let totalamount = {}
       Record.aggregate([
         {
           $group: {
@@ -20,9 +19,7 @@ router.get("/", (req, res) => {
         totalamount = amount[0]
         res.render("index", { records, totalamount })
       })
-
     })
-
 })
 
 module.exports = router
