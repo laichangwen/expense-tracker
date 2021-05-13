@@ -11,7 +11,7 @@
         </form>
         <form action="/filter/month" method="GET">
           <select name="filter" class="form-control btn-outline-secondary" id='inputType' onchange="this.form.submit()"
-            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(102, 85, 85);width:130px">
+            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(122, 182, 189);width:130px">
             <option value="" disabled selected>Month</option>
             <option value="" {{#if (eq filter '' )}} selected {{/if}}>All</option>
             <option value="1" {{#if (eq filter '1' )}} selected {{/if}}>January</option>
@@ -30,7 +30,7 @@
         </form>
         <form action="/filter" method="GET">
           <select name="filter" class="form-control btn-outline-secondary" id='inputType' onchange="this.form.submit()"
-            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(102, 85, 85);width:150px">
+            style="cursor: pointer; text-align: center; text-align-last: center;color: rgb(122, 182, 189);width:150px">
             <option value="" disabled selected>Category</option>
             <option value="" {{#if (eq filter '' )}} selected {{/if}}>All</option>
             <option value="家居物業" {{#if (eq filter '家居物業' )}} selected {{/if}}>家居物業</option>
